@@ -3,7 +3,7 @@ pipeline {
             stages {
                 stage ('PULL') {
                 steps {
-                    echo "PULL SUCCESS"
+                   git 'https://github.com/chetanraval07/shivansh-jenkins.git'
                 }
             }
                  stage ('BUILD') {
