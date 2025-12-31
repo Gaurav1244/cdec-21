@@ -5,7 +5,8 @@ pipeline {
 
         stage('PULL') {
             steps {
-                git 'https://github.com/Gaurav1244/cdec-21.git'
+                git branch:  'main',
+                 url: 'https://github.com/Gaurav1244/cdec-21.git'
             }
         }
 
