@@ -5,8 +5,8 @@ pipeline {
 
         stage('PULL') {
             steps {
-                git 'https://github.com/Gaurav1244/cdec-21.git'
-
+                git branch: 'main',
+                    url: 'https://github.com/Gaurav1244/cdec-21.git'
             }
         }
 
@@ -23,9 +23,9 @@ pipeline {
                 withSonarQubeEnv('sonar-cred1') {
                     dir('backend') {
                         sh '''
-                            mvn org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
-                              -Dsonar.projectKey=studentapp \
-                              -Dsonar.projectName=studentapp
+                        mvn org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
+                          -Dsonar.projectKey=studentapp \
+                          -Dsonar.projectName=studentapp
                         '''
                     }
                 }
@@ -39,3 +39,4 @@ pipeline {
         }
     }
 }
+
