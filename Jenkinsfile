@@ -20,7 +20,7 @@ pipeline {
 
         stage('SONARQUBE ANALYSIS') {
             steps {
-                withSonarQubeEnv('sonar-cred1') {
+                withSonarQubeEnv('mysonarqube') {
                     dir('backend') {
                         sh '''
                         mvn org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
