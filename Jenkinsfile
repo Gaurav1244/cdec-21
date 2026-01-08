@@ -23,10 +23,9 @@ pipeline {
                 withSonarQubeEnv('mysonarqube') {
                     dir('backend') {
                         sh '''
-                        mvn sonar:sonar \
-                          -Dsonar.projectKey=student-registration-backend \
-                          -Dsonar.projectName=student-registration-backend \
-                          -Dsonar.java.binaries=target
+                        mvn clean verify sonar:sonar \
+                         -Dsonar.projectKey=myapp \
+                         -Dsonar.projectName='myapp' \
                         '''
                     }
                 }
