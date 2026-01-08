@@ -18,14 +18,14 @@ pipeline {
             }
         }
 
-        stage('SONARQUBE ANALYSIS') {
+        stage('TEST') {
             steps {
                 withSonarQubeEnv('mysonarqube') {
                     dir('backend') {
                         sh '''
-                        mvn clean verify sonar:sonar \
-                         -Dsonar.projectKey=myapp \
-                         -Dsonar.projectName='myapp' \
+                            mvn org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
+                              -Dsonar.projectKey=myapp \
+                              -Dsonar.projectName=myapp
                         '''
                     }
                 }
