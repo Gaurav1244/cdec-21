@@ -18,20 +18,21 @@ pipeline {
             }
         }
 
-        stage('TEST') {
+        stage('SONARQUBE ANALYSIS') {
             steps {
                 withSonarQubeEnv('mysonarqube') {
                     dir('backend') {
                         sh '''
-                            mvn org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
-                              -Dsonar.projectKey=myapp \
-                              -Dsonar.projectName=myapp
+                        mvn org.sonarsource.scanner.maven:sonar-maven-plugin:5.5.0.6356:sonar \
+                          -Dsonar.projectKey=myapp \
+                          -Dsonar.projectName=myapp
                         '''
                     }
                 }
             }
         }
-	stage('QUALITY GATE') {
+
+        stage('QUALITY GATE') {
             steps {
                 timeout(time: 5, unit: 'MINUTES') {
                     waitForQualityGate abortPipeline: true
